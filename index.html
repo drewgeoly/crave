@@ -1,72 +1,1009 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Crave – Healthy Custom Meal Prep</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crave - Revolutionary Meal Prep</title>
+  <style>
+    /* CSS Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Variables */
+    :root {
+      --primary: #1b4965;
+      --secondary: #5fa8d3;
+      --accent: #62b6cb;
+      --light: #cae9ff;
+      --pale: #bee9e8;
+      --white: #ffffff;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --transition: all 0.3s ease;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --radius: 8px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: var(--light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--primary);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 0.5rem 2rem;
+      background-color: rgba(27, 73, 101, 0.95);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+      transition: var(--transition);
+    }
+
+    .logo h1 {
+      color: var(--text-light);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: var(--transition);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav li {
+      margin-left: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.5rem;
+    }
+
+    /* Hero section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      text-align: center;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .hero-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--text-light);
+      padding: 0.8rem 2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 2px solid var(--accent);
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background-color: transparent;
+      color: var(--text-light);
+    }
+
+    .shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+
+    /* About section */
+    .about {
+      padding: 6rem 2rem;
+      background-color: var(--white);
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: var(--accent);
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature-card {
+      background-color: var(--light);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      transform: translateY(0);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+      color: var(--text-dark);
+    }
+
+    /* Survey section */
+    .survey {
+      padding: 6rem 2rem;
+      background-color: var(--pale);
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 3rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(98, 182, 203, 0.2);
+    }
+
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+    }
+
+    .radio-option input {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.5rem 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+    }
+
+    .checkbox-option input {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    button[type="submit"] {
+      background-color: var(--accent);
+      color: var(--text-light);
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: block;
+      margin: 2rem auto 0;
+      font-size: 1rem;
+    }
+
+    button[type="submit"]:hover {
+      background-color: var(--primary);
+    }
+
+    /* Contact section */
+    .contact {
+      padding: 6rem 2rem;
+      background-color: var(--white);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-right: 1rem;
+      min-width: 24px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--light);
+      border-radius: 50%;
+      transition: var(--transition);
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    .social-link:hover {
+      background-color: var(--accent);
+      color: var(--text-light);
+    }
+
+    .contact-form {
+      background-color: var(--light);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .form-container {
+        padding: 2rem;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary);
+        padding: 1rem 0;
+        box-shadow: var(--shadow);
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav li {
+        margin: 0;
+        padding: 0.5rem 2rem;
+      }
+
+      .contact-container {
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+
+      .feature-card {
+        padding: 1.5rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .animated-float {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .visible {
+      animation: fadeIn 1s forwards;
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loader-circle {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      border-top: 5px solid var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <img src="logo.png" alt="Crave logo" class="logo">
-    <nav>
-      <a href="#about">About</a>
-      <a href="#survey">Survey</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <h1>Crave</h1>
+      </div>
+      <button class="hamburger">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#survey">Survey</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section id="hero" class="reveal">
-      <h1>Welcome to Crave</h1>
-      <p>Your healthy, convenient, customizable meal‐prep solution.</p>
-    </section>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="shapes"></div>
+    <div class="hero-content">
+      <h2>Revolutionizing Meal Prep</h2>
+      <p>Healthy, convenient, and customizable meals tailored to your lifestyle. Take control of your nutrition without sacrificing time or taste.</p>
+      <a href="#survey" class="cta-button">Take Our Survey</a>
+    </div>
+  </section>
 
-    <section id="about" class="reveal">
-      <h2>About Us</h2>
-      <p>At Crave, we believe meal prep should fit your life. Choose macros, flavors, or dietary goals—and we’ll deliver fresh, chef-crafted meals you’ll crave.</p>
-    </section>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>About Crave</h2>
+        <p>We're on a mission to transform meal preparation with nutritious, delicious, and personalized options.</p>
+      </div>
+      <div class="features">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🥗</div>
+          <h3>Healthy</h3>
+          <p>Nutrient-dense ingredients, balanced macros, and portion-controlled meals designed by nutritionists.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⏱️</div>
+          <h3>Convenient</h3>
+          <p>Ready-to-eat or quick-heat options delivered to your doorstep on your schedule.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔄</div>
+          <h3>Customizable</h3>
+          <p>Personalize your meal plan based on dietary preferences, restrictions, and fitness goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="survey" class="reveal">
-      <h2>Get Started</h2>
-      <form id="survey-form">
-        <label>
-          Name
-          <input type="text" name="name" required>
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" required>
-        </label>
-        <label>
-          Dietary Preference
-          <select name="diet">
-            <option value="none">No preference</option>
-            <option value="vegan">Vegan</option>
-            <option value="keto">Keto</option>
-            <option value="paleo">Paleo</option>
-          </select>
-        </label>
-        <label>
-          Favorite Cuisine
-          <input type="text" name="cuisine">
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      <p id="form-message" class="hidden"></p>
-    </section>
+  <!-- Survey Section -->
+  <section id="survey" class="survey">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Help Us Serve You Better</h2>
+        <p>Tell us about your preferences and needs to shape our meal prep service.</p>
+      </div>
+      <div class="form-container fade-in">
+        <form action="https://formspree.io/f/mzzrdpez" method="POST">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="frequency">How often do you currently meal prep?</label>
+            <select id="frequency" name="meal_prep_frequency">
+              <option value="">Select an option</option>
+              <option value="never">Never</option>
+              <option value="occasionally">Occasionally</option>
+              <option value="weekly">Weekly</option>
+              <option value="multiple_times">Multiple times per week</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>What are your main goals with meal prepping?</label>
+            <div class="checkbox-group">
+              <div class="checkbox-option">
+                <input type="checkbox" id="save_time" name="goals" value="save_time">
+                <label for="save_time">Save time</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="healthy_eating" name="goals" value="healthy_eating">
+                <label for="healthy_eating">Eat healthier</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="weight_management" name="goals" value="weight_management">
+                <label for="weight_management">Weight management</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="muscle_gain" name="goals" value="muscle_gain">
+                <label for="muscle_gain">Muscle gain</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="save_money" name="goals" value="save_money">
+                <label for="save_money">Save money</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="portion_control" name="goals" value="portion_control">
+                <label for="portion_control">Portion control</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Do you have any dietary restrictions?</label>
+            <div class="checkbox-group">
+              <div class="checkbox-option">
+                <input type="checkbox" id="vegetarian" name="dietary_restrictions" value="vegetarian">
+                <label for="vegetarian">Vegetarian</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="vegan" name="dietary_restrictions" value="vegan">
+                <label for="vegan">Vegan</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="gluten_free" name="dietary_restrictions" value="gluten_free">
+                <label for="gluten_free">Gluten-free</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="dairy_free" name="dietary_restrictions" value="dairy_free">
+                <label for="dairy_free">Dairy-free</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="keto" name="dietary_restrictions" value="keto">
+                <label for="keto">Keto</label>
+              </div>
+              <div class="checkbox-option">
+                <input type="checkbox" id="paleo" name="dietary_restrictions" value="paleo">
+                <label for="paleo">Paleo</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>How much would you be willing to pay per meal?</label>
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="price_1" name="price_range" value="under_10">
+                <label for="price_1">Under $10</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="price_2" name="price_range" value="10_15">
+                <label for="price_2">$10-$15</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="price_3" name="price_range" value="15_20">
+                <label for="price_3">$15-$20</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="price_4" name="price_range" value="over_20">
+                <label for="price_4">Over $20</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="feedback">Any additional feedback or suggestions?</label>
+            <textarea id="feedback" name="feedback" rows="4"></textarea>
+          </div>
+          <button type="submit">Submit Survey</button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="reveal">
-      <h2>Contact</h2>
-      <p>Email us at <a href="mailto:hello@crave.me">hello@crave.me</a></p>
-    </section>
-  </main>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Get in Touch</h2>
+        <p>Have questions? We'd love to hear from you!</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info fade-in">
+          <h3>Contact Information</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">📍</div>
+            <div>
+              <p>123 Health Street</p>
+              <p>Foodville, CA 90210</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">📞</div>
+            <div>
+              <p>(555) 123-4567</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <p>info@cravemealprep.com</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link">f</a>
+            <a href="#" class="social-link">t</a>
+            <a href="#" class="social-link">in</a>
+            <a href="#" class="social-link">ig</a>
+          </div>
+        </div>
+        <div class="contact-form fade-in">
+          <h3>Send us a Message</h3>
+          <form action="https://formspree.io/f/mzzrdpez" method="POST">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" name="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer>
-    © 2025 Crave
+    <div class="footer-container">
+      <div class="footer-logo">
+        <h2>Crave</h2>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#survey">Survey</a>
+        <a href="#contact">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="copyright">
+        &copy; <span id="year"></span> Crave Meal Prep. All rights reserved.
+      </div>
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Loader
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.querySelector('.loader').classList.add('hidden');
+      }, 1000);
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('nav ul');
+    
+    hamburger.addEventListener('click', function() {
+      navMenu.classList.toggle('show');
+    });
+
+    // Scroll animations
+    const header = document.querySelector('header');
+    const heroContent = document.querySelector('.hero-content');
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    // Show hero content on load
+    setTimeout(function() {
+      heroContent.classList.add('visible');
+    }, 500);
+
+    // Scroll animations
+    window.addEventListener('scroll', function() {
+      // Header scroll effect
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Fade in elements when scrolled to
+      fadeElements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if (elementPosition < screenPosition) {
+          element.classList.add('visible');
+        }
+      });
+    });
+
+    // Create floating shapes for hero section
+    function createShapes() {
+      const shapesContainer = document.querySelector('.shapes');
+      const shapeCount = 15;
+      
+      for (let i = 0; i < shapeCount; i++) {
+        const shape = document.createElement('div');
+        shape.classList.add('shape');
+        
+        // Random size between 20 and 80px
+        const size = Math.random() * 60 + 20;
+        shape.style.width = `${size}px`;
+        shape.style.height = `${size}px`;
+        
+        // Random position
+        shape.style.left = `${Math.random() * 100}%`;
+        shape.style.top = `${Math.random() * 100}%`;
+        
+        // Random animation delay and duration
+        const animDuration = Math.random() * 20 + 10;
+        const animDelay = Math.random() * 10;
+        shape.style.animation = `float ${animDuration}s ease-in-out ${animDelay}s infinite`;
+        
+        shapesContainer.appendChild(shape);
+      }
+    }
+    
+    createShapes();
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Close mobile menu if open
+        if (navMenu.classList.contains('show')) {
+          navMenu.classList.remove('show');
+        }
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Form submission handling with animation
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        const button = this.querySelector('button[type="submit"]');
+        button.innerHTML = 'Submitting...';
+        button.disabled = true;
+        
+        // We're using formspree so no need to prevent default
+        setTimeout(() => {
+          button.innerHTML = 'Submitted!';
+          setTimeout(() => {
+            button.innerHTML = 'Submit';
+            button.disabled = false;
+          }, 3000);
+        }, 1500);
+      });
+    });
+  </script>
 </body>
 </html>

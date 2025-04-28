@@ -1,0 +1,72 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crave – Healthy Custom Meal Prep</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <img src="logo.png" alt="Crave logo" class="logo">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#survey">Survey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="reveal">
+      <h1>Welcome to Crave</h1>
+      <p>Your healthy, convenient, customizable meal‐prep solution.</p>
+    </section>
+
+    <section id="about" class="reveal">
+      <h2>About Us</h2>
+      <p>At Crave, we believe meal prep should fit your life. Choose macros, flavors, or dietary goals—and we’ll deliver fresh, chef-crafted meals you’ll crave.</p>
+    </section>
+
+    <section id="survey" class="reveal">
+      <h2>Get Started</h2>
+      <form id="survey-form">
+        <label>
+          Name
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required>
+        </label>
+        <label>
+          Dietary Preference
+          <select name="diet">
+            <option value="none">No preference</option>
+            <option value="vegan">Vegan</option>
+            <option value="keto">Keto</option>
+            <option value="paleo">Paleo</option>
+          </select>
+        </label>
+        <label>
+          Favorite Cuisine
+          <input type="text" name="cuisine">
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="form-message" class="hidden"></p>
+    </section>
+
+    <section id="contact" class="reveal">
+      <h2>Contact</h2>
+      <p>Email us at <a href="mailto:hello@crave.me">hello@crave.me</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Crave
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

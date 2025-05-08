@@ -713,74 +713,162 @@
           </div>
           <!-- Lunch Habits -->
           <div class="form-group">
-            <label>What do you typically do for lunch on a weekday?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="lunch_routine" value="eat_out"> I usually eat out or order takeout</label>
-              <label><input type="radio" name="lunch_routine" value="cook_home"> I cook at home</label>
-              <label><input type="radio" name="lunch_routine" value="meal_prep"> I meal prep</label>
-              <label><input type="radio" name="lunch_routine" value="ready_made"> I eat a ready-made meal</label>
-              <label><input type="radio" name="lunch_routine" value="skip"> I skip lunch or snack instead</label>
-              <label><input type="radio" name="lunch_routine" value="other"> Other (please specify)</label>
-            </div>
+            <label for="lunch_routine">What do you typically do for lunch on a weekday?</label>
+            <select id="lunch_routine" name="lunch_routine" required>
+              <option value="">Select an option</option>
+              <option value="eat_out">I usually eat out or order takeout</option>
+              <option value="cook_home">I cook at home</option>
+              <option value="meal_prep">I meal prep</option>
+              <option value="ready_made">I eat a ready-made meal</option>
+              <option value="skip">I skip lunch or snack instead</option>
+              <option value="other">Other (please specify)</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label>How much time do you usually spend preparing or getting lunch?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="lunch_time" value="under_15"> Less than 15 minutes</label>
-              <label><input type="radio" name="lunch_time" value="15_30"> 15–30 minutes</label>
-              <label><input type="radio" name="lunch_time" value="30_60"> 30–60 minutes</label>
-              <label><input type="radio" name="lunch_time" value="over_60"> More than 1 hour</label>
-            </div>
+            <label for="lunch_time">How much time do you usually spend preparing or getting lunch?</label>
+            <select id="lunch_time" name="lunch_time" required>
+              <option value="">Select an option</option>
+              <option value="under_15">Less than 15 minutes</option>
+              <option value="15_30">15–30 minutes</option>
+              <option value="30_60">30–60 minutes</option>
+              <option value="over_60">More than 1 hour</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label>How much do you typically spend on lunch?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="lunch_spend" value="under_10"> Under $10</label>
-              <label><input type="radio" name="lunch_spend" value="10_15">$10–15</label>
-              <label><input type="radio" name="lunch_spend" value="15_20">$15–20</label>
-              <label><input type="radio" name="lunch_spend" value="20_25">$20–25</label>
-              <label><input type="radio" name="lunch_spend" value="25_30">$25–30</label>
-              <label><input type="radio" name="lunch_spend" value="30_35">$30–35</label>
-              <label><input type="radio" name="lunch_spend" value="over_35"> Over $35</label>
-            </div>
+            <label for="lunch_spend">How much do you typically spend on lunch?</label>
+            <select id="lunch_spend" name="lunch_spend" required>
+              <option value="">Select an option</option>
+              <option value="under_10">Under $10</option>
+              <option value="10_15">$10–15</option>
+              <option value="15_20">$15–20</option>
+              <option value="20_25">$20–25</option>
+              <option value="25_30">$25–30</option>
+              <option value="30_35">$30–35</option>
+              <option value="over_35">Over $35</option>
+            </select>
           </div>
 
           <!-- Dinner Habits -->
           <div class="form-group">
-            <label>What do you typically do for dinner on a weekday?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="dinner_routine" value="eat_out"> I usually eat out or order takeout</label>
-              <label><input type="radio" name="dinner_routine" value="cook_home"> I cook at home</label>
-              <label><input type="radio" name="dinner_routine" value="meal_prep"> I meal prep</label>
-              <label><input type="radio" name="dinner_routine" value="ready_made"> I eat a ready-made meal</label>
-              <label><input type="radio" name="dinner_routine" value="skip"> I skip dinner or snack instead</label>
-              <label><input type="radio" name="dinner_routine" value="other"> Other (please specify)</label>
-            </div>
+            <label for="dinner_routine">What do you typically do for dinner on a weekday?</label>
+            <select id="dinner_routine" name="dinner_routine" required>
+              <option value="">Select an option</option>
+              <option value="eat_out">I usually eat out or order takeout</option>
+              <option value="cook_home">I cook at home</option>
+              <option value="meal_prep">I meal prep</option>
+              <option value="ready_made">I eat a ready-made meal</option>
+              <option value="skip">I skip dinner or snack instead</option>
+              <option value="other">Other (please specify)</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label>How much time do you usually spend preparing or getting dinner?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="dinner_time" value="under_15"> Less than 15 minutes</label>
-              <label><input type="radio" name="dinner_time" value="15_30"> 15–30 minutes</label>
-              <label><input type="radio" name="dinner_time" value="30_60"> 30–60 minutes</label>
-              <label><input type="radio" name="dinner_time" value="over_60"> More than 1 hour</label>
-            </div>
+            <label for="dinner_time">How much time do you usually spend preparing or getting dinner?</label>
+            <select id="dinner_time" name="dinner_time" required>
+              <option value="">Select an option</option>
+              <option value="under_15">Less than 15 minutes</option>
+              <option value="15_30">15–30 minutes</option>
+              <option value="30_60">30–60 minutes</option>
+              <option value="over_60">More than 1 hour</option>
+            </select>
           </div>
 
           <div class="form-group">
-            <label>How much do you typically spend on dinner?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="dinner_spend" value="under_10"> Under $10</label>
-              <label><input type="radio" name="dinner_spend" value="10_15">$10–15</label>
-              <label><input type="radio" name="dinner_spend" value="15_20">$15–20</label>
-              <label><input type="radio" name="dinner_spend" value="20_25">$20–25</label>
-              <label><input type="radio" name="dinner_spend" value="25_30">$25–30</label>
-              <label><input type="radio" name="dinner_spend" value="30_35">$30–35</label>
-              <label><input type="radio" name="dinner_spend" value="over_35"> Over $35</label>
-            </div>
+            <label for="dinner_spend">How much do you typically spend on dinner?</label>
+            <select id="dinner_spend" name="dinner_spend" required>
+              <option value="">Select an option</option>
+              <option value="under_10">Under $10</option>
+              <option value="10_15">$10–15</option>
+              <option value="15_20">$15–20</option>
+              <option value="20_25">$20–25</option>
+              <option value="25_30">$25–30</option>
+              <option value="30_35">$30–35</option>
+              <option value="over_35">Over $35</option>
+            </select>
+          </div>
+
+          <!-- Meal Services -->
+          <div class="form-group">
+            <label>Have you used any of the following ready-made meal services?</label>
+            <div class="checkbox-group">
+          <!-- Lunch Habits -->
+          <div class="form-group">
+            <label for="lunch_routine">What do you typically do for lunch on a weekday?</label>
+            <select id="lunch_routine" name="lunch_routine" required>
+              <option value="">Select an option</option>
+              <option value="eat_out">I usually eat out or order takeout</option>
+              <option value="cook_home">I cook at home</option>
+              <option value="meal_prep">I meal prep</option>
+              <option value="ready_made">I eat a ready-made meal</option>
+              <option value="skip">I skip lunch or snack instead</option>
+              <option value="other">Other (please specify)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="lunch_time">How much time do you usually spend preparing or getting lunch?</label>
+            <select id="lunch_time" name="lunch_time" required>
+              <option value="">Select an option</option>
+              <option value="under_15">Less than 15 minutes</option>
+              <option value="15_30">15–30 minutes</option>
+              <option value="30_60">30–60 minutes</option>
+              <option value="over_60">More than 1 hour</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="lunch_spend">How much do you typically spend on lunch?</label>
+            <select id="lunch_spend" name="lunch_spend" required>
+              <option value="">Select an option</option>
+              <option value="under_10">Under $10</option>
+              <option value="10_15">$10–15</option>
+              <option value="15_20">$15–20</option>
+              <option value="20_25">$20–25</option>
+              <option value="25_30">$25–30</option>
+              <option value="30_35">$30–35</option>
+              <option value="over_35">Over $35</option>
+            </select>
+          </div>
+
+          <!-- Dinner Habits -->
+          <div class="form-group">
+            <label for="dinner_routine">What do you typically do for dinner on a weekday?</label>
+            <select id="dinner_routine" name="dinner_routine" required>
+              <option value="">Select an option</option>
+              <option value="eat_out">I usually eat out or order takeout</option>
+              <option value="cook_home">I cook at home</option>
+              <option value="meal_prep">I meal prep</option>
+              <option value="ready_made">I eat a ready-made meal</option>
+              <option value="skip">I skip dinner or snack instead</option>
+              <option value="other">Other (please specify)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dinner_time">How much time do you usually spend preparing or getting dinner?</label>
+            <select id="dinner_time" name="dinner_time" required>
+              <option value="">Select an option</option>
+              <option value="under_15">Less than 15 minutes</option>
+              <option value="15_30">15–30 minutes</option>
+              <option value="30_60">30–60 minutes</option>
+              <option value="over_60">More than 1 hour</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dinner_spend">How much do you typically spend on dinner?</label>
+            <select id="dinner_spend" name="dinner_spend" required>
+              <option value="">Select an option</option>
+              <option value="under_10">Under $10</option>
+              <option value="10_15">$10–15</option>
+              <option value="15_20">$15–20</option>
+              <option value="20_25">$20–25</option>
+              <option value="25_30">$25–30</option>
+              <option value="30_35">$30–35</option>
+              <option value="over_35">Over $35</option>
+            </select>
           </div>
 
           <!-- Meal Services -->
@@ -799,14 +887,15 @@
 
           <!-- Delivery Services -->
           <div class="form-group">
-            <label>How often do you use a meal delivery service like UberEats or DoorDash?</label>
-            <div class="radio-group">
-              <label><input type="radio" name="delivery_frequency" value="daily"> Daily</label>
-              <label><input type="radio" name="delivery_frequency" value="weekly"> Once a week</label>
-              <label><input type="radio" name="delivery_frequency" value="monthly"> Once a month</label>
-              <label><input type="radio" name="delivery_frequency" value="rarely"> Rarely</label>
-              <label><input type="radio" name="delivery_frequency" value="never"> I’ve never used these services</label>
-            </div>
+            <label for="delivery_frequency">How often do you use a meal delivery service like UberEats or DoorDash?</label>
+            <select id="delivery_frequency" name="delivery_frequency" required>
+              <option value="">Select an option</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Once a week</option>
+              <option value="monthly">Once a month</option>
+              <option value="rarely">Rarely</option>
+              <option value="never">I’ve never used these services</option>
+            </select>
           </div>
         </form>  
   </section>
